@@ -2,7 +2,7 @@ NAME = libasm
 
 NAME_LIB = libasm.a
 
-SRCS = 	ft_write.s ft_read.s ft_strlen.s ft_strcpy.s
+SRCS = 	ft_write.s ft_read.s ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s
 
 CC = gcc
 
@@ -23,7 +23,7 @@ $(NAME) : $(OBJ)
 	ar rcs $(NAME_LIB) $(OBJ)
 
 ccproject :
-	$(CC) $(CFLAGS) main.c $(NAME_LIB)
+	$(CC) $(CFLAGS) main.c -no-pie $(NAME_LIB)
 	
 clean :
 	rm -f $(OBJ)
