@@ -5,25 +5,20 @@ ft_strcmp:
         jmp loop
 
 loop:
-        mov bl, [rdi + rax]
-        mov cl, [rsi + rax]
+        mov bl, [rdi]
+        mov cl, [rsi]
         cmp bl, 0
-        je negatif
+        je exit
         cmp cl, 0
-        je positif
-        inc rax
+        je exit
+        cmp bl, cl
+        jne exit
+        inc rdi
+        inc rsi
         jmp loop
 
-negatif:
-        cmp cl, 0
-        je egale
-        mov rax, -1
-        ret
-
-positif:
-        mov rax, 1
-        ret
-
-egale:
-        mov rax, 0
+exit:
+        movzx rax, bl
+        movzx r10, cl
+        sub rax, r10
         ret
