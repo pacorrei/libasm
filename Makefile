@@ -1,6 +1,4 @@
-NAME = libasm
-
-NAME_LIB = libasm.a
+NAME = libasm.a
 
 SRCS = 	ft_write.s ft_read.s ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s
 
@@ -20,16 +18,16 @@ OBJ = $(SRCS:.s=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	ar rcs $(NAME_LIB) $(OBJ)
-
-ccproject :
-	$(CC) $(CFLAGS) main.c -no-pie $(NAME_LIB)
+	ar rcs $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) main.c $(NAME)
 	
 clean :
 	rm -f $(OBJ)
 
 fclean : clean
-	rm -f $(NAME_LIB)
+	rm -f $(NAME)
 	rm -f ./a.out
 
 re : fclean all
+
+.PHONY: re clean fclean all
